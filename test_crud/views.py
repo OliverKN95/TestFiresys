@@ -28,9 +28,12 @@ class personViewset(viewsets.ModelViewSet):
     queryset = person.objects.all()
     serializer_class = personSerializer
     filterset_class = PersonFilter
+    authentication_classes = []
+    permission_classes = []
+
 
     def get_queryset(self):
-        queryset = self.queryset
+        queryset = person.objects.all()
 
         query_search = self.request.query_params.get('search', None)
 
